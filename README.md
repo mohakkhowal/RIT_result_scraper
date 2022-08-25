@@ -18,6 +18,11 @@ A Result Scraping bot for MSRIT exam.msrit.edu portal, enabling proctors/HODs/st
 - python3
 - software to open .xlsx sheets
 ## How to run
+Clone this repo using code->download zip
+OR
+```
+git clone https://github.com/mohakkhowal/RIT_result_scraper.git
+```
 Generate a .txt file in sample.txt like format
 - Windows- Run 'windows_autorunner.bat'
 - Others:  in Terminal: 
