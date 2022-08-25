@@ -1,13 +1,13 @@
 
 # RIT RESULT SCRAPER
 
-A Result Scraping bot for MSRIT exam.msrit.edu portal, enabling proctors/HODs/staff/students to generate a detialed report of Sem-end Result for requiured students.
+A Result Scraping bot for MSRIT exam.msrit.edu portal, enabling proctors/HODs/staff/students to generate a detailed report of Sem-end Result for required students.
 
 
 ## Features
 
 - Bypasses CAPTCHA
-- Fast and effecient (Tested for 1337 students in 2:23:05 minutes)
+- Fast and effecient (Tested for 1337 students in 143 seconds!!!)
 - Divides data into different sheets based on Branch
 - Highlights Students with 'I'/'F'/'X' grade
 - Spreadsheet representation, making it easier for further computation
