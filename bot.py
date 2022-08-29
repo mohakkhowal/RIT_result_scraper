@@ -37,6 +37,7 @@ with alive_bar(total) as bar:
             has_f_x_i=False
             r = requests.get(URL)
             soup = bs(r.text, "lxml")
+            # print(soup.prettify())
             name = soup.find("h3").contents[0]
             # imgUrl = "http://exam.msrit.edu"+soup.find(class_="uk-preserve-width uk-border").attrs['src']
             # # print(imgUrl)
@@ -48,10 +49,14 @@ with alive_bar(total) as bar:
             cred_reg = basicdata[0].contents[0]
             cred_earn = basicdata[1].contents[0]
             sgpa = basicdata[2].contents[0]
-            cgpa = basicdata[3].contents[0]
+            if(URlch=='1'):
+                cgpa = basicdata[3].contents[0]
             advdata = soup.find(class_="uk-table uk-table-striped res-table").findAll("td")
             i=0
-            toinsert = [usn,name,cred_reg,cred_earn,sgpa,cgpa]
+            if(URlch=='2'):
+                toinsert = [usn,name,cred_reg,cred_earn,sgpa]
+            else:
+                toinsert = [usn,name,cred_reg,cred_earn,sgpa,cgpa]
             while(i<len(advdata)):
                 toinsert.append(''.join([x[0] for x in advdata[i+1].contents[0].split()])+'/'+advdata[i].contents[0])
                 toinsert.append(advdata[i+4].contents[0])
@@ -79,7 +84,10 @@ with alive_bar(total) as bar:
                 wb.active = wb[branch]
                 sheet = wb.active
                 count=1
-                sheet.append(["USN","Name","Creds Registered","Creds Earned","SGPA","CGPA","Subject","Grade"])
+                if(URlch=='2'):
+                    sheet.append(["USN","Name","Creds Registered","Creds Earned","SGPA","Subject","Grade"])
+                else:
+                    sheet.append(["USN","Name","Creds Registered","Creds Earned","SGPA","CGPA","Subject","Grade"])
             # img = op.drawing.image.Image('img.png')
             # img.height = 100
             # img.width=100
