@@ -7,9 +7,16 @@ import openpyxl as op
 import sys
 from openpyxl.styles import Font
 #i/p o/p file details: 
+URlch = input('1: exam.msrit.edu\n2: exam.msrit.edu/examresultseven\nEnter working website choice 1 or 2:   ').strip()
+if(URlch=='1'):
+    URLpre = "http://exam.msrit.edu/index.php/component/examresult/?usn="
+elif(URlch=='2'):
+    URLpre = "http://exam.msrit.edu/eresultseven/index.php/component/examresult/?usn="
+else:
+    print("Invalid choice")
+    sys.exit(0)
 usnList = input("Enter name of desired list of USN, (in sample.txt-like format): ")
 resultFile = input("Enter name of desired Result .xlsx file(without extension), and PLEASE CLOSE THE FILE, IF ALREADY OPENED: ")+".xlsx"
-
 try:
     file = open(usnList,'r')
 except:
@@ -24,7 +31,7 @@ count=1
 with alive_bar(total) as bar:
     for usn in allUsn:
         bar()
-        URL = "http://exam.msrit.edu/index.php/component/examresult/?usn="+usn+"&task=getResult&stage=1"
+        URL = URLpre+usn+"&task=getResult&stage=1"
         branch = usn[5:7]
         try:
             has_f_x_i=False
